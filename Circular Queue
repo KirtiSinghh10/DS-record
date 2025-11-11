@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 3
+
+int arr[SIZE];
+int f=-1;
+int r=-1;
+
+int enqueue(int x){
+    if (r==-1 && f==-1){
+        r=0;
+        f=0;
+        arr[r]=x;}
+    else if((r+1)%SIZE==f){
+        printf("Queue is full!");}
+    else{
+        r=(r+1)%SIZE;
+        arr[r]=x;
+    }}
+void dequeue(){
+    if (r==-1 && f==-1){
+        printf("The queue is empty!");
+    }
+    else if (r==f){
+        printf("The popped element is: %d", arr[f]);
+        r=-1;
+        f=-1;}
+
+    else{
+        printf("The popped element is: %d", arr[f]);
+        f=(f+1)%SIZE;}}
+
+void display(){
+    if (r==-1 && f==-1){
+        printf("No elements to be displayed");
+    }
+    else{
+        int i=f;
+        while (1){
+             printf("%d", arr[f]);
+             if (i==r){
+                break;
+             }
+             i=(i+1)%SIZE;}
+    }}
+int main(){
+    while (1){
+        int c;
+        printf("\n Choose operation- 1:Dequeue, 2: Enqueue, 3: Display, 4:Exit\n");
+        scanf("%d", &c);
+        switch(c){
+    case 1:{
+        dequeue();
+        break; }
+    case 2:{
+        int y;
+        printf("Enter element to be inserted:");
+        scanf("%d", &y);
+        enqueue(y);
+        break;}
+    case 3:
+        {
+        display();
+        break;}
+    case 4:{
+        exit(0);
+        break;}
+    defalut:{
+        printf("Invalid Input");
+        break;}}}}
