@@ -1,0 +1,69 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+#define SIZE 5
+
+int stack[SIZE];
+int top=-1;
+
+void push(int val){
+    if (top==SIZE-1){
+        printf("Stack Overflow!");
+    }
+    else{
+        top++;
+        stack[top]=val;
+        printf("Inserted value:%d", val);
+    }
+}
+
+void pop(){
+    if (top==-1){
+        printf("Stack Underflow!");
+    }
+    else{
+        printf("Deleted value:%d", stack[top]);
+        top--;
+    }
+}
+
+void display(){
+    if (top==-1){
+        printf("No elements in the stack");
+    }
+    else{
+            printf("The elements of the stack are:");
+        for(int i=top;i>=0;i--){
+            printf("%d ",stack[i]);
+        }
+    }
+}
+int main(){
+    while (1){
+        int c;
+        printf("\n Choose operation\n 1:Push, 2:Pop, 3:Display, 4:Exit \n");
+        scanf("%d", &c);
+        switch(c){
+            case 1:{
+                int val;
+                printf("enter value to be inserted:");
+                scanf("%d", &val);
+                push(val);
+                break;}
+            case 2:{
+                pop();
+                break;}
+            case 3:{
+                display();
+                break;}
+            case 4:{
+                exit(0);}
+            default:{
+                printf("invalid input");
+                break;}
+        }
+    }
+    return 0;
+}
+
+
